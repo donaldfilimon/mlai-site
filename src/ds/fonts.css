@@ -1,0 +1,32 @@
+/* mlai-site webfonts — Sora (display), Manrope (body), JetBrains Mono (labels).
+   The woff2 files ship with the design-system bundle (vendor/site/fonts). The
+   --font-* tokens mirror vendor/site/theme.css; the vendored utility stylesheet
+   resolves .font-display / .font-mono through them. */
+
+@font-face {
+  font-family: "Sora";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("./fonts/sora.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("./fonts/manrope.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("./fonts/jbmono.woff2") format("woff2");
+}
+
+:root {
+  --font-sora: "Sora";
+  --font-manrope: "Manrope";
+  --font-jbm: "JetBrains Mono";
+}
