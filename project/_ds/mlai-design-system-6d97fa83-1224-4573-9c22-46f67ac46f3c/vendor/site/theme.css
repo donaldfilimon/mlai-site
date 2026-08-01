@@ -1,0 +1,4 @@
+/* MLAI (mlai-site) theme tokens — extracted from the compiled bundle; the full
+   component stylesheet is embedded in components/vendor/SiteRuntime and injected at
+   runtime by the compiled bundle. */
+:root{--font-sora:"Sora";--font-manrope:"Manrope";--font-jbm:"JetBrains Mono"}

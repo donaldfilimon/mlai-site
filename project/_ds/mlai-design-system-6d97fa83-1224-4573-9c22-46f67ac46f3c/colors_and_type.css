@@ -1,0 +1,243 @@
+/* ════════════════════════════════════════════════════════════════
+   MLAI Corporation — Colors & Type
+   Machine Learning Advanced Innovations, Inc.
+   Privacy-first AI infrastructure · "private, high-performance AI"
+
+   The reconciled v2 token system. Drop into src/index.css (or @import).
+   Components consume ROLES (var(--action), var(--surface-2),
+   var(--space-card)) — never raw hues. Change a token, every surface
+   updates at once.
+
+   Fonts: Outfit (display), Inter (text), JetBrains Mono (mono/labels).
+   Load from Google Fonts (see fonts note in README) or swap @font-face.
+   ════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ── FONT FAMILIES ───────────────────────────────────────────── */
+  --font-display: 'Outfit', sans-serif;             /* hero, headings  */
+  --font-sans:    'Inter', system-ui, sans-serif;   /* UI, body        */
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace; /* labels, code, metrics, eyebrows */
+
+  /* ── COLOR · ACTION (interaction only) ───────────────────────── */
+  /* One blue carries every interaction. Reserve for buttons, links, focus. */
+  --action:        #3B82F6;
+  --action-hover:  #2563EB;            /* hover / pressed */
+  --action-soft:   rgba(59,130,246,0.14); /* tinted action surface */
+
+  /* ── COLOR · SPECTRUM (identity & data, never decorative) ────── */
+  --spectrum-cyan:   #22D3EE;          /* Abi · moderation, interactive accents */
+  --spectrum-blue:   #60A5FA;          /* mid-spectrum · charts, gradients */
+  --spectrum-violet: #A855F7;          /* Aviva · research, vision */
+  --spectrum-grad:   linear-gradient(100deg, #67E8F9, #60A5FA, #C084FC); /* @kind color */
+  /* the signature MLAI gradient — wordmark accents, hero lines, the mark */
+
+  /* ── COLOR · PERSONAS (three minds, one system) ──────────────── */
+  --persona-abbey: #34D399;            /* Empathic Polymath · proof / verified */
+  --persona-aviva: #A855F7;            /* Unfiltered Expert · research / vision */
+  --persona-abi:   #22D3EE;            /* Adaptive Moderator · interactive */
+
+  /* ── COLOR · SEMANTIC (meaning) ──────────────────────────────── */
+  --proof:   #34D399;                  /* success, verified, benchmark-pass (= Abbey) */
+  --signal:  #FBBF24;                  /* benchmarks, attention, throughput */
+  --danger:  #F87171;                  /* failure modes, destructive */
+
+  /* ── COLOR · NEUTRAL (text & hairlines) ──────────────────────── */
+  --text:        #FAFAFA;              /* primary text / headings */
+  --text-dim:    #A1A1AA;              /* secondary text */
+  --text-faint:  #71717A;              /* tertiary / captions */
+  --hair:        rgba(255,255,255,0.08); /* hairline borders */
+  --hair-strong: rgba(255,255,255,0.14);
+
+  /* ── ELEVATION · 4-tier surface ramp ─────────────────────────── */
+  /* Each surface pairs with a fixed shadow so depth reads the same everywhere. */
+  --surface-0: #050509;   /* L0 · canvas / page background */
+  --surface-1: #08090F;   /* L1 · sunken — wells, code, inputs */
+  --surface-2: #0E0F18;   /* L2 · surface — default card / panel */
+  --surface-3: #161721;   /* L3 · raised — hover, nested card, popover */
+  --surface-4: #1D1E2A;   /* L4 · overlay — modal, tooltip, command menu */
+
+  --shadow-1: inset 0 2px 14px rgba(0,0,0,0.55);     /* sunken inset */
+  --shadow-2: 0 8px 32px rgba(0,0,0,0.35);           /* surface */
+  --shadow-3: 0 14px 44px rgba(0,0,0,0.5);           /* raised */
+  --shadow-4: 0 28px 80px rgba(0,0,0,0.7);           /* overlay */
+
+  /* glass: frosted panels on near-black */
+  --glass-fill:  linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.01));
+  --glass-sheen: inset 0 1px 0 rgba(255,255,255,0.08); /* @kind shadow */ /* top highlight */
+  --glass-blur:  blur(14px); /* @kind other */
+
+  /* ── SPACING · 4px base scale ────────────────────────────────── */
+  --space-1: 0.25rem;  /* 4  */
+  --space-2: 0.5rem;   /* 8  */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+  --space-10: 8rem;    /* 128 */
+
+  /* semantic rhythm — built on the scale */
+  --space-section: clamp(4rem, 9vw, 8rem);  /* between page sections */
+  --space-block:   3rem;     /* between blocks within a section */
+  --space-card:    2rem;     /* internal card padding */
+  --space-stack:   1.5rem;   /* default vertical stack gap */
+  --space-inline:  0.75rem;  /* inline gap (chips, icon+label) */
+
+  /* ── RADII ───────────────────────────────────────────────────── */
+  --radius-sm:   8px;    /* inputs, small chips (square-ish) */
+  --radius-md:   12px;   /* nested tiles, stat blocks */
+  --radius-lg:   20px;   /* cards, glass panels (default) */
+  --radius-xl:   28px;   /* large surfaces, hero frames */
+  --radius-pill: 999px;  /* buttons, badges, nav pills */
+
+  /* ── TYPE · Major-Third scale (1.25), tuned leading + tracking ─ */
+  --text-h00:  4.768rem;  /* Display · hero headline */
+  --text-h0:   3.815rem;  /* page title */
+  --text-h1:   3.052rem;  /* section title */
+  --text-h2:   2.441rem;  /* subsection */
+  --text-h3:   1.953rem;  /* card heading */
+  --text-h4:   1.563rem;  /* lead / large body */
+  --text-h5:   1.25rem;   /* emphasis */
+  --text-base: 1rem;      /* paragraph text */
+  --text-mono: 0.75rem;   /* labels, code, eyebrows */
+
+  /* tracking tightens as size grows; leading loosens as size shrinks */
+  --tracking-display: -0.03em;
+  --tracking-tight:   -0.02em;
+  --tracking-normal:  0;
+  --tracking-mono:    0.18em;
+  --tracking-eyebrow: 0.24em;
+
+  --leading-display: 1.02;
+  --leading-tight:   1.1;
+  --leading-snug:    1.25;
+  --leading-normal:  1.6;
+
+  /* ── MOTION ──────────────────────────────────────────────────── */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */ /* default — entrances, reveals */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */ /* moves, toggles */
+  --dur-fast:    180ms; /* @kind other */
+  --dur-base:    300ms; /* @kind other */
+  --dur-slow:    500ms; /* @kind other */
+  --dur-reveal:  700ms; /* @kind other */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   SEMANTIC ELEMENT STYLES
+   Apply on a dark MLAI surface. Set the page to --surface-0.
+   ════════════════════════════════════════════════════════════════ */
+
+.mlai {
+  background: var(--surface-0);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+}
+.mlai ::selection { background: rgba(59,130,246,0.3); }
+
+/* Headings — Outfit, tight tracking, weight by level */
+.mlai h1, .h-display {
+  font-family: var(--font-display);
+  font-size: var(--text-h00);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  text-wrap: balance;
+}
+.mlai h2, .h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  text-wrap: balance;
+}
+.mlai h3, .h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  line-height: var(--leading-snug);
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+.mlai h4, .h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  line-height: var(--leading-snug);
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+/* Body & supporting text */
+.mlai p, .body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--text-dim);
+  margin: 0;
+  text-wrap: pretty;
+}
+.lead {
+  font-family: var(--font-sans);
+  font-size: var(--text-h4);
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text-dim);
+}
+.dim   { color: var(--text-dim); }
+.faint { color: var(--text-faint); }
+
+/* Eyebrow — mono, uppercase, wide tracking, usually a spectrum/persona color */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;          /* 11px */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--spectrum-cyan);
+}
+
+/* Gradient text — the signature spectrum lockup */
+.gtext {
+  background-image: var(--spectrum-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Mono / metrics / inline code */
+.mono, .mlai code, .mlai kbd {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono);
+  letter-spacing: 0.02em;
+}
+.mlai code {
+  color: var(--spectrum-cyan);
+  background: var(--surface-1);
+  border-radius: var(--radius-sm);
+  padding: 0.15em 0.45em;
+}
+.mlai kbd {
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-sm);
+  padding: 0.2em 0.5em;
+}

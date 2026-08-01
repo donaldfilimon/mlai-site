@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/lab/fonts/fonts.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/lab/theme.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/site/fonts/fonts.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/site/theme.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/tw-token-registry.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/styles.css">
+  <script src="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js"></script>
+  <script src="router.js"></script>
+  <style>
+    body { margin: 0; background: #05070B; color: #CBD5E1; }
+    a { color: #00D4FF; text-decoration: none; }
+    a:hover { color: #FFFFFF; }
+    @keyframes mlaiRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
+</helmet>
+<div style="min-height:100vh;background:#05070B;color:#CBD5E1;font-family:'Manrope',system-ui,sans-serif" data-screen-label="Contact">
+  <x-import component-from-global-scope="MLAI.Nav" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,64px"></x-import>
+
+  <div style="position:relative;overflow:hidden">
+    <x-import component-from-global-scope="mlai-galaxy" from="galaxy.js" accent="#00D4FF" accent2="#7C3AED" density="60" style="position:absolute;inset:0" hint-size="100%,420px"></x-import>
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 35% 20%,black,transparent);mask-image:radial-gradient(ellipse 70% 70% at 35% 20%,black,transparent)"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 30% -10%,rgba(0,212,255,0.13),transparent 62%)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(180deg,transparent,#05070B)"></div>
+    <div style="position:relative;max-width:1152px;margin:0 auto;padding:124px 24px 48px">
+      <x-import component-from-global-scope="MLAI.Eyebrow" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" hint-size="auto,20px">Contact</x-import>
+      <h1 style="font-family:'Sora',sans-serif;font-weight:700;font-size:64px;line-height:1.06;letter-spacing:-0.03em;color:#FFFFFF;margin:22px 0 0;max-width:900px;animation:mlaiRise 700ms cubic-bezier(0.22,1,0.36,1) both">Request access.</h1>
+      <p style="font-size:18px;line-height:1.7;color:#94A3B8;max-width:680px;margin:20px 0 0">Tell us what you're building and where the data has to live. We onboard small batches while the SDKs harden — expect a reply from an engineer, not a sequence.</p>
+    </div>
+  </div>
+
+  <div style="max-width:1152px;margin:0 auto;padding:48px 24px 96px;display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:start">
+    <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+      <div class="surface accent-edge" style="--accent:#00D4FF;padding:40px 38px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+          <label style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:#64748B">Name</span>
+            <input type="text" value="{{ name }}" onChange="{{ setName }}" placeholder="Ada Lovelace" style="background:#05070B;border:1px solid rgba(255,255,255,0.14);color:#F1F5F9;padding:13px 14px;font-family:'Manrope',sans-serif;font-size:15px;outline:none;transition:border-color 180ms ease" style-focus="border-color:#00D4FF">
+            <sc-if value="{{ nameError }}" hint-placeholder-val="{{ false }}">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#F87171">Required</span>
+            </sc-if>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:#64748B">Work email</span>
+            <input type="email" value="{{ email }}" onChange="{{ setEmail }}" placeholder="ada@company.com" style="background:#05070B;border:1px solid rgba(255,255,255,0.14);color:#F1F5F9;padding:13px 14px;font-family:'Manrope',sans-serif;font-size:15px;outline:none;transition:border-color 180ms ease" style-focus="border-color:#00D4FF">
+            <sc-if value="{{ emailError }}" hint-placeholder-val="{{ false }}">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#F87171">{{ emailErrorMsg }}</span>
+            </sc-if>
+          </label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:8px;margin-top:22px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:#64748B">What are you building?</span>
+          <textarea value="{{ building }}" onChange="{{ setBuilding }}" rows="{{ 4 }}" placeholder="A clinical-notes search tool that can't touch the cloud…" style="background:#05070B;border:1px solid rgba(255,255,255,0.14);color:#F1F5F9;padding:13px 14px;font-family:'Manrope',sans-serif;font-size:15px;line-height:1.6;outline:none;resize:vertical;transition:border-color 180ms ease" style-focus="border-color:#00D4FF"></textarea>
+          <sc-if value="{{ buildingError }}" hint-placeholder-val="{{ false }}">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#F87171">Tell us a sentence or two</span>
+          </sc-if>
+        </label>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:22px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:#64748B">Where does the data have to live?</span>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <sc-for list="{{ dataOptions }}" as="opt" hint-placeholder-count="3">
+              <button onClick="{{ opt.select }}" style="background: {{ opt.bg }};border:1px solid {{ opt.border }};color: {{ opt.color }};padding:10px 18px;font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.12em;cursor:pointer;transition:all 180ms ease">{{ opt.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:18px;margin-top:34px">
+          <button onClick="{{ submit }}" style="border:1px solid #00D4FF;background:#00D4FF;color:#05070B;padding:14px 30px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;cursor:pointer;transition:all 180ms ease" style-hover="background:transparent;color:#00D4FF">Submit request</button>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#475569">No sequence. No CRM drip. One reply.</span>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+      <div class="surface accent-edge" style="--accent:#10B981;padding:56px 48px;text-align:center">
+        <div style="width:52px;height:52px;border-radius:99px;border:1px solid rgba(16,185,129,0.5);color:#34D399;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto">✓</div>
+        <h2 style="font-family:'Sora',sans-serif;font-weight:700;font-size:32px;letter-spacing:-0.02em;color:#FFFFFF;margin:24px 0 0">Request received.</h2>
+        <p style="font-size:16px;line-height:1.7;color:#94A3B8;max-width:420px;margin:14px auto 0">Thanks, <span>{{ name }}</span>. An engineer will reply to <span style="color:#CBD5E1">{{ email }}</span> within a few days. Meanwhile, the research index is the best tour of how the system thinks.</p>
+        <div style="display:flex;gap:14px;justify-content:center;margin-top:30px">
+          <a href="/research" style="border:1px solid rgba(255,255,255,0.16);color:#CBD5E1;padding:12px 22px;font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.15em" style-hover="border-color:rgba(255,255,255,0.45);color:#FFFFFF">Read the research →</a>
+          <button onClick="{{ reset }}" style="background:none;border:none;color:#64748B;font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.15em;cursor:pointer" style-hover="color:#FFFFFF">Send another</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <x-import component-from-global-scope="MLAI.Callout" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" label="What happens next" hint-size="100%,150px">We read every request against one question: does the data genuinely have to stay on-device? If yes, you'll hear from us with a scoping call. If a cloud vector store already fits, we'll tell you that too.</x-import>
+      <x-import component-from-global-scope="MLAI.SpecList" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" dc-props="{{ channels }}" hint-size="100%,160px"></x-import>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="MLAI.Footer" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,320px"></x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    name: "",
+    email: "",
+    building: "",
+    dataHome: "On-device only",
+    touched: false,
+    submitted: false
+  };
+
+  renderVals() {
+    const s = this.state;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email);
+    const nameError = s.touched && s.name.trim().length === 0;
+    const emailError = s.touched && !emailOk;
+    const buildingError = s.touched && s.building.trim().length < 10;
+    const options = ["On-device only", "Hybrid", "Not sure yet"];
+    return {
+      name: s.name,
+      email: s.email,
+      building: s.building,
+      submitted: s.submitted,
+      notSubmitted: !s.submitted,
+      nameError: nameError,
+      emailError: emailError,
+      emailErrorMsg: s.email.trim().length === 0 ? "Required" : "That doesn't look like an email",
+      buildingError: buildingError,
+      setName: (e) => this.setState({ name: e.target.value }),
+      setEmail: (e) => this.setState({ email: e.target.value }),
+      setBuilding: (e) => this.setState({ building: e.target.value }),
+      dataOptions: options.map((label) => ({
+        label: label,
+        bg: s.dataHome === label ? "rgba(0,212,255,0.12)" : "transparent",
+        border: s.dataHome === label ? "#00D4FF" : "rgba(255,255,255,0.14)",
+        color: s.dataHome === label ? "#00D4FF" : "#94A3B8",
+        select: () => this.setState({ dataHome: label })
+      })),
+      submit: () => {
+        const ok = s.name.trim().length > 0 && emailOk && s.building.trim().length >= 10;
+        if (ok) {
+          this.setState({ submitted: true });
+        } else {
+          this.setState({ touched: true });
+        }
+      },
+      reset: () => this.setState({ name: "", email: "", building: "", dataHome: "On-device only", touched: false, submitted: false }),
+      channels: {
+        rows: [
+          { k: "Email", v: "hello@mlai.example" },
+          { k: "Response time", v: "A few days, from an engineer" },
+          { k: "Onboarding", v: "Small batches while SDKs harden" }
+        ]
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

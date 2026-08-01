@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/lab/fonts/fonts.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/lab/theme.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/site/fonts/fonts.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/site/theme.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/tw-token-registry.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/styles.css">
+  <script src="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js"></script>
+  <script src="router.js"></script>
+  <style>
+    body { margin: 0; background: #05070B; color: #CBD5E1; }
+    a { color: #00D4FF; text-decoration: none; }
+    a:hover { color: #FFFFFF; }
+    @keyframes mlaiRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
+</helmet>
+<div style="min-height:100vh;background:#05070B;color:#CBD5E1;font-family:'Manrope',system-ui,sans-serif" data-screen-label="Platform">
+  <x-import component-from-global-scope="MLAI.Nav" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,64px"></x-import>
+
+  <div style="position:relative;overflow:hidden">
+    <x-import component-from-global-scope="mlai-galaxy" from="galaxy.js" accent="#00D4FF" accent2="#7C3AED" density="60" style="position:absolute;inset:0" hint-size="100%,480px"></x-import>
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 35% 20%,black,transparent);mask-image:radial-gradient(ellipse 70% 70% at 35% 20%,black,transparent)"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 30% -10%,rgba(0,212,255,0.13),transparent 62%)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(180deg,transparent,#05070B)"></div>
+    <div style="position:relative;max-width:1152px;margin:0 auto;padding:124px 24px 48px">
+      <x-import component-from-global-scope="MLAI.Eyebrow" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" hint-size="auto,20px">Platform</x-import>
+      <h1 style="font-family:'Sora',sans-serif;font-weight:700;font-size:64px;line-height:1.06;letter-spacing:-0.03em;color:#FFFFFF;margin:22px 0 0;max-width:900px;animation:mlaiRise 700ms cubic-bezier(0.22,1,0.36,1) both">One stack, no seams.</h1>
+      <p style="font-size:18px;line-height:1.7;color:#94A3B8;max-width:680px;margin:20px 0 0">WDBX stores, ABI accelerates, Abbey remembers — one binary, one memory, zero network hops. Every layer runs on hardware you control.</p>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="The layers" title="Storage up to intelligence" lead="Three products, deliberately thin interfaces between them." hint-size="100%,560px">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <a href="/wdbx" class="surface surface-hover accent-edge" style="--accent:#00D4FF;display:grid;grid-template-columns:80px 220px 1fr auto;gap:24px;align-items:center;padding:28px 30px;color:#CBD5E1">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#475569">L1</span>
+        <span style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:#FFFFFF">WDBX</span>
+        <span style="font-size:15px;line-height:1.6;color:#94A3B8">Vector storage. HNSW indexing, MVCC transactions, hash-chained audit log.</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:#00D4FF">Store →</span>
+      </a>
+      <a href="/abi" class="surface surface-hover accent-edge" style="--accent:#7C3AED;display:grid;grid-template-columns:80px 220px 1fr auto;gap:24px;align-items:center;padding:28px 30px;color:#CBD5E1">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#475569">L2</span>
+        <span style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:#FFFFFF">ABI Framework</span>
+        <span style="font-size:15px;line-height:1.6;color:#94A3B8">Acceleration and orchestration. Tensor ops on Metal, persona routing, tracing.</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:#A78BFA">Accelerate →</span>
+      </a>
+      <a href="/abbey" class="surface surface-hover accent-edge" style="--accent:#10B981;display:grid;grid-template-columns:80px 220px 1fr auto;gap:24px;align-items:center;padding:28px 30px;color:#CBD5E1">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.2em;color:#475569">L3</span>
+        <span style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:#FFFFFF">Abbey</span>
+        <span style="font-size:15px;line-height:1.6;color:#94A3B8">Intelligence. Three persona registers over persistent, verifiable memory.</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.15em;color:#34D399">Remember →</span>
+      </a>
+    </div>
+  </x-import>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="Data flow" title="From input to auditable answer" lead="The same four hops, whether the caller is an app, a bot, or a shell." accent="abi" hint-size="100%,480px">
+    <x-import component-from-global-scope="MLAI.StepList" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abi" dc-props="{{ flow }}" hint-size="100%,320px"></x-import>
+  </x-import>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="Deployment" title="Runs where the data lives" accent="wdbx" hint-size="100%,400px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start">
+      <x-import component-from-global-scope="MLAI.SpecList" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" dc-props="{{ deploy }}" hint-size="100%,220px"></x-import>
+      <x-import component-from-global-scope="MLAI.Callout" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" label="Local-first, by construction" hint-size="100%,160px">There is no MLAI cloud in the request path. Cloud LLM providers are optional, explicit, and off by default — the storage, index, and audit trail never leave the device.</x-import>
+    </div>
+  </x-import>
+
+  <div style="max-width:1152px;margin:0 auto;padding:0 24px 96px">
+    <x-import component-from-global-scope="MLAI.NextUp" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" dc-props="{{ nextLinks }}" hint-size="100%,180px"></x-import>
+  </div>
+
+  <x-import component-from-global-scope="MLAI.Footer" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,320px"></x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      flow: {
+        steps: [
+          { title: "Embed", body: "Content becomes vectors on-device via the ABI tensor pipeline. Nothing is uploaded to be understood." },
+          { title: "Index", body: "WDBX files each vector into the HNSW graph inside an MVCC transaction; the WAL records the write before it counts." },
+          { title: "Retrieve", body: "Queries pull durable records under a hard token budget, with provenance attached to every chunk." },
+          { title: "Govern", body: "Every hop lands in the hash-chained audit trail. Answers keep their receipts; operators keep rollback points." }
+        ]
+      },
+      deploy: {
+        rows: [
+          { k: "Targets", v: "macOS / iOS (Swift 6 SDK)" },
+          { k: "GPU backends", v: "Metal · CUDA · Vulkan" },
+          { k: "Binary", v: "Single static binary, Zig-built" },
+          { k: "Network", v: "None required in the request path" },
+          { k: "Cloud LLMs", v: "Optional, explicit, off by default" }
+        ]
+      },
+      nextLinks: {
+        items: [
+          { label: "Architecture", href: "/architecture", desc: "The six layers and the verifiable memory model.", accent: "abi" },
+          { label: "WDBX", href: "/wdbx", desc: "Start at the storage layer.", accent: "wdbx" }
+        ]
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

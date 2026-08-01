@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/lab/fonts/fonts.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/lab/theme.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/site/fonts/fonts.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/site/theme.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/tw-token-registry.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/styles.css">
+  <script src="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js"></script>
+  <script src="router.js"></script>
+  <style>
+    body { margin: 0; background: #05070B; color: #CBD5E1; }
+    a { color: #00D4FF; text-decoration: none; }
+    a:hover { color: #FFFFFF; }
+    @keyframes mlaiRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
+</helmet>
+<div style="min-height:100vh;background:#05070B;color:#CBD5E1;font-family:'Manrope',system-ui,sans-serif" data-screen-label="WDBX">
+  <x-import component-from-global-scope="MLAI.Nav" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,64px"></x-import>
+
+  <div style="position:relative;overflow:hidden">
+    <x-import component-from-global-scope="mlai-galaxy" from="galaxy.js" accent="#00D4FF" accent2="#7C3AED" density="60" style="position:absolute;inset:0" hint-size="100%,480px"></x-import>
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 35% 20%,black,transparent);mask-image:radial-gradient(ellipse 70% 70% at 35% 20%,black,transparent)"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 30% -10%,rgba(0,212,255,0.13),transparent 62%)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(180deg,transparent,#05070B)"></div>
+    <div style="position:relative;max-width:1152px;margin:0 auto;padding:124px 24px 48px">
+      <x-import component-from-global-scope="MLAI.Eyebrow" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" hint-size="auto,20px">Vector store</x-import>
+      <h1 style="font-family:'Sora',sans-serif;font-weight:700;font-size:64px;line-height:1.06;letter-spacing:-0.03em;color:#FFFFFF;margin:22px 0 0;max-width:900px;animation:mlaiRise 700ms cubic-bezier(0.22,1,0.36,1) both">The fastest vector database alive.</h1>
+      <p style="font-size:18px;line-height:1.7;color:#94A3B8;max-width:680px;margin:20px 0 0">Zig-built vector storage with HNSW indexing, MVCC transactions, and Metal / CUDA / Vulkan backends. Runs where the data lives.</p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px">
+        <x-import component-from-global-scope="MLAI.StatBlock" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" dc-props="{{ statA }}" hint-size="100%,140px"></x-import>
+        <x-import component-from-global-scope="MLAI.StatBlock" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" dc-props="{{ statB }}" hint-size="100%,140px"></x-import>
+        <x-import component-from-global-scope="MLAI.StatBlock" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" dc-props="{{ statC }}" hint-size="100%,140px"></x-import>
+        <x-import component-from-global-scope="MLAI.StatBlock" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" dc-props="{{ statD }}" hint-size="100%,140px"></x-import>
+      </div>
+      <div style="margin-top:24px">
+        <x-import component-from-global-scope="MLAI.ProvLegend" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,32px"></x-import>
+      </div>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="Engine" title="Built close to the metal" lead="Six subsystems, one binary. No network hop between your app and its memory." hint-size="100%,560px">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <x-import component-from-global-scope="MLAI.FeatureCard" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" title="HNSW index architecture" desc="Hierarchical Navigable Small World graphs. O(log n) search. 95% recall at 8.2ms on 1M vectors." hint-size="100%,160px"></x-import>
+      <x-import component-from-global-scope="MLAI.FeatureCard" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" title="Memory-mapped persistence" desc="Zero-copy I/O with WAL journaling. Instant cold starts." hint-size="100%,160px"></x-import>
+      <x-import component-from-global-scope="MLAI.FeatureCard" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" title="Scalar &amp; product quantization" desc="Up to 32× compression with minimal recall loss. 10B vectors addressable in 2GB RAM." hint-size="100%,160px"></x-import>
+      <x-import component-from-global-scope="MLAI.FeatureCard" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" title="Metal GPU acceleration" desc="Distance calculations on Apple GPU via the ABI Framework. First App Store-ready vector database." hint-size="100%,160px"></x-import>
+      <x-import component-from-global-scope="MLAI.FeatureCard" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" title="MVCC transactions" desc="Multiversion concurrency control. Readers never block writers; writers never block readers." hint-size="100%,160px"></x-import>
+      <x-import component-from-global-scope="MLAI.FeatureCard" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" title="AES-256 + RBAC" desc="Encryption at rest, role-based access control, audit-grade write-ahead log." hint-size="100%,160px"></x-import>
+    </div>
+  </x-import>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="Index structure" title="Hierarchy that narrows fast" lead="Sparse upper layers route long hops; dense lower layers finish the search." hint-size="100%,520px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start">
+      <x-import component-from-global-scope="MLAI.IndexCard" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,360px"></x-import>
+      <x-import component-from-global-scope="MLAI.SpecList" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" dc-props="{{ specs }}" hint-size="100%,360px"></x-import>
+    </div>
+  </x-import>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="Scale" title="Benchmarks at three sizes" lead="Single Apple Silicon node; harness in repo. All numbers measured." hint-size="100%,480px">
+    <x-import component-from-global-scope="MLAI.DataTable" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" dc-props="{{ scaleTable }}" hint-size="100%,280px"></x-import>
+  </x-import>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="Competitive" title="On-device changes the math" lead="Zero network latency, native SDKs, and memory footprints a phone can carry." hint-size="100%,720px">
+    <x-import component-from-global-scope="MLAI.DataTable" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" highlight-col="{{ 1 }}" dc-props="{{ compTable }}" hint-size="100%,320px"></x-import>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px">
+      <x-import component-from-global-scope="MLAI.StatBlock" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" dc-props="{{ claimA }}" hint-size="100%,140px"></x-import>
+      <x-import component-from-global-scope="MLAI.StatBlock" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" dc-props="{{ claimB }}" hint-size="100%,140px"></x-import>
+      <x-import component-from-global-scope="MLAI.StatBlock" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" dc-props="{{ claimC }}" hint-size="100%,140px"></x-import>
+    </div>
+  </x-import>
+
+  <div style="max-width:1152px;margin:0 auto;padding:0 24px 96px">
+    <x-import component-from-global-scope="MLAI.NextUp" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" dc-props="{{ nextLinks }}" hint-size="100%,180px"></x-import>
+  </div>
+
+  <x-import component-from-global-scope="MLAI.Footer" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,320px"></x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      statA: { stat: { value: "2.3ms", label: "p50 search latency", tag: "measured" } },
+      statB: { stat: { value: "98.2%", label: "Recall@10", tag: "measured" } },
+      statC: { stat: { value: "16.5K", label: "QPS — stress-test objective", tag: "target" } },
+      statD: { stat: { value: "0.8ms", label: "p50 @ 1M vectors", tag: "target" } },
+      specs: {
+        rows: [
+          { k: "Index", v: "HNSW, M=16, efConstruction=200" },
+          { k: "Distance metrics", v: "Cosine, L2, dot product" },
+          { k: "Concurrency", v: "Lock-free MVCC" },
+          { k: "Persistence", v: "Memory-mapped + WAL journaling" },
+          { k: "Compression", v: "Scalar & product quantization, up to 32×" },
+          { k: "Security", v: "AES-256 at rest, RBAC, hash-chained audit log" },
+          { k: "Backends", v: "Metal / CUDA / Vulkan" },
+          { k: "SDK", v: "Swift 6 native, iOS / macOS" }
+        ]
+      },
+      scaleTable: {
+        cols: ["Metric", "100K", "1M", "10M"],
+        rows: [
+          ["Insert throughput", "6,667/s", "6,579/s", "6,500/s"],
+          ["Search latency (k=10)", "2.5ms", "8.2ms", "15.3ms"],
+          ["Memory usage", "150MB", "1.5GB", "15GB"],
+          ["With quantization", "20MB", "200MB", "2GB"]
+        ]
+      },
+      compTable: {
+        cols: ["", "WDBX", "Pinecone", "Qdrant", "Chroma"],
+        rows: [
+          ["100% on-device privacy", "Yes", "—", "Partial", "Partial"],
+          ["Apple Silicon optimized", "Native Metal", "—", "—", "—"],
+          ["iOS / macOS native SDK", "Swift 6", "REST only", "REST only", "Python"],
+          ["Search latency (1M vectors)", "8.2ms", "50–100ms", "25ms", "30ms"],
+          ["Memory (1M vectors, quantized)", "200MB", "Cloud only", "1.5GB", "1.8GB"],
+          ["Integrated ML acceleration", "ABI Framework", "—", "—", "—"]
+        ]
+      },
+      claimA: { stat: { value: "6–12×", label: "Faster search vs cloud competitors — zero network latency", tag: "measured" } },
+      claimB: { stat: { value: "8×", label: "Lower memory footprint with product quantization", tag: "measured" } },
+      claimC: { stat: { value: "Only", label: "App Store-ready vector DB with native Swift/Metal integration", tag: "measured" } },
+      nextLinks: {
+        items: [
+          { label: "ABI Framework", href: "/abi", desc: "The acceleration layer WDBX rides on.", accent: "abi" },
+          { label: "Abbey", href: "/abbey", desc: "What verifiable memory makes possible.", accent: "abbey" }
+        ]
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

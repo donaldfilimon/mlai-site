@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/lab/fonts/fonts.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/lab/theme.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/site/fonts/fonts.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/site/theme.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/tw-token-registry.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/styles.css">
+  <script src="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: #0B0E14; color: #CBD5E1; }
+    a { color: #67E8F9; text-decoration: none; }
+    a:hover { color: #FFFFFF; }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
+</helmet>
+<div style="min-height:100vh;background:var(--background);color:var(--foreground);font-family:var(--font-sans);display:grid;grid-template-columns:232px 1fr;position:relative;--cpad: {{ cPad }};--crow: {{ cRow }};--cgap: {{ cGap }};--cchat: {{ cChat }};--cbody: {{ cBody }};--caccent: {{ cAccent }};--caccent-soft: {{ cAccentSoft }};--caccent-glow: {{ cAccentGlow }}" data-screen-label="MLAI Console">
+
+  <sc-if value="{{ ambientGlow }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 45% at 60% -8%,var(--caccent-glow),transparent 60%),radial-gradient(ellipse 45% 40% at 95% 105%,rgba(167,139,250,0.08),transparent 60%)"></div>
+  </sc-if>
+
+  <aside style="border-right:1px solid var(--border);display:flex;flex-direction:column;padding:20px 14px;gap:6px;position:sticky;top:0;height:100vh;box-sizing:border-box">
+    <div style="display:flex;align-items:center;gap:10px;padding:6px 10px 18px">
+      <span style="font-family:var(--font-mono);font-weight:700;font-size:15px;letter-spacing:0.18em;color:#FFFFFF">MLAI</span>
+      <span style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:#64748B;border:1px solid var(--border);padding:2px 7px;border-radius:99px">Console</span>
+    </div>
+    <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="3">
+      <button onClick="{{ item.go }}" style="display:flex;align-items:center;gap:10px;background: {{ item.bg }};border:none;color: {{ item.color }};padding:10px 12px;border-radius:8px;font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;text-align:left;transition:all 150ms ease">
+        <span style="width:6px;height:6px;border-radius:99px;background: {{ item.dot }}"></span>
+        <span>{{ item.label }}</span>
+      </button>
+    </sc-for>
+    <div style="margin-top:auto;padding:12px 10px;border-top:1px solid var(--border)">
+      <p style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.14em;color:#475569;margin:0;line-height:1.8">All figures simulated<br>Local-first · no network</p>
+    </div>
+  </aside>
+
+  <main style="position:relative;padding:var(--cpad);max-width:1000px;box-sizing:border-box;width:100%">
+
+    <sc-if value="{{ isQuery }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <p style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--caccent);margin:0">WDBX · Query playground</p>
+        <h1 style="font-family:var(--font-display);font-size:30px;font-weight:600;color:#FFFFFF;margin:10px 0 0">Search the store</h1>
+        <p style="font-size:14px;color:#94A3B8;margin:8px 0 0;max-width:560px">Semantic search over an 8-record demo corpus. Latency and scores are simulated to illustrate the product surface.</p>
+
+        <div style="display:flex;gap:10px;margin-top:26px;align-items:center">
+          <div style="flex:1">
+            <x-import component-from-global-scope="MlaiLab.Input" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" value="{{ query }}" on-change="{{ setQuery }}" on-key-down="{{ queryKeyDown }}" placeholder="e.g. how does provenance survive long-context retrieval?" hint-size="100%,38px"></x-import>
+          </div>
+          <x-import component-from-global-scope="MlaiLab.Button" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" on-click="{{ runSearch }}" hint-size="96px,38px">Search</x-import>
+        </div>
+        <div style="display:flex;gap:18px;margin-top:14px;align-items:center">
+          <span style="font-family:var(--font-mono);font-size:11px;color:#64748B">k=5 · cosine · HNSW M=16 ef=200</span>
+          <sc-if value="{{ hasSearched }}" hint-placeholder-val="{{ false }}">
+            <span style="font-family:var(--font-mono);font-size:11px;color: {{ latColor }}">{{ latency }} · <span style="color:#64748B">simulated</span></span>
+          </sc-if>
+        </div>
+
+        <sc-if value="{{ searching }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:var(--cgap);margin-top:24px">
+            <x-import component-from-global-scope="MlaiLab.Skeleton" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" class-name="h-20 w-full" hint-size="100%,80px"></x-import>
+            <x-import component-from-global-scope="MlaiLab.Skeleton" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" class-name="h-20 w-full" hint-size="100%,80px"></x-import>
+            <x-import component-from-global-scope="MlaiLab.Skeleton" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" class-name="h-20 w-full" hint-size="100%,80px"></x-import>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ showResults }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:var(--cgap);margin-top:24px">
+            <sc-for list="{{ results }}" as="r" hint-placeholder-count="5">
+              <div style="border:1px solid var(--border);border-radius:10px;padding:var(--crow);background:var(--card);display:grid;grid-template-columns:1fr auto;gap:14px;align-items:start;transition:border-color 150ms ease" style-hover="border-color:var(--caccent-soft)">
+                <div style="min-width:0">
+                  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+                    <span style="font-weight:600;color:#F1F5F9;font-size:14px">{{ r.title }}</span>
+                    <x-import component-from-global-scope="MlaiLab.Badge" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" variant="outline" hint-size="auto,20px">{{ r.tag }}</x-import>
+                  </div>
+                  <p style="font-size:var(--cbody);line-height:1.6;color:#94A3B8;margin:8px 0 0">{{ r.chunk }}</p>
+                  <p style="font-family:var(--font-mono);font-size:10px;color:#475569;margin:8px 0 0">{{ r.prov }}</p>
+                </div>
+                <div style="text-align:right">
+                  <p style="font-family:var(--font-mono);font-size:16px;color:var(--caccent);margin:0">{{ r.score }}</p>
+                  <p style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:#475569;margin:4px 0 0">cosine</p>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isPersonas }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <p style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:#34D399;margin:0">Personas · Chat surface</p>
+        <h1 style="font-family:var(--font-display);font-size:30px;font-weight:600;color:#FFFFFF;margin:10px 0 0">Three registers, one memory</h1>
+        <div style="display:flex;gap:10px;margin-top:22px">
+          <sc-for list="{{ personaTabs }}" as="p" hint-placeholder-count="3">
+            <button onClick="{{ p.pick }}" style="display:flex;align-items:center;gap:8px;background: {{ p.bg }};border:1px solid {{ p.border }};color: {{ p.color }};padding:9px 16px;border-radius:99px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;cursor:pointer;transition:all 150ms ease">
+              <span style="width:7px;height:7px;border-radius:99px;background: {{ p.dot }}"></span>
+              <span>{{ p.name }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <p style="font-size:13px;color:#64748B;margin:12px 0 0">{{ personaHint }}</p>
+
+        <div style="border:1px solid var(--border);border-radius:12px;background:var(--card);margin-top:20px;display:flex;flex-direction:column;height:var(--cchat)">
+          <div style="flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px">
+            <sc-for list="{{ messages }}" as="m" hint-placeholder-count="2">
+              <div style="display:flex;flex-direction:column;gap:4px;align-items: {{ m.align }}">
+                <span style="font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color: {{ m.nameColor }}">{{ m.who }}</span>
+                <div style="max-width:78%;background: {{ m.bg }};border:1px solid {{ m.border }};border-radius:10px;padding:10px 14px;font-size:14px;line-height:1.6;color:#E2E8F0">{{ m.text }}</div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}">
+              <span style="font-family:var(--font-mono);font-size:11px;color:#64748B">{{ activePersona }} is composing…</span>
+            </sc-if>
+          </div>
+          <div style="border-top:1px solid var(--border);padding:14px;display:flex;gap:10px">
+            <div style="flex:1">
+              <x-import component-from-global-scope="MlaiLab.Input" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" value="{{ draft }}" on-change="{{ setDraft }}" on-key-down="{{ draftKeyDown }}" placeholder="Ask about vector search…" hint-size="100%,38px"></x-import>
+            </div>
+            <x-import component-from-global-scope="MlaiLab.Button" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" on-click="{{ send }}" hint-size="80px,38px">Send</x-import>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isAudit }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <p style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:#A78BFA;margin:0">WAL · Audit trail</p>
+        <h1 style="font-family:var(--font-display);font-size:30px;font-weight:600;color:#FFFFFF;margin:10px 0 0">Hash-chained history</h1>
+        <p style="font-size:14px;color:#94A3B8;margin:8px 0 0;max-width:560px">Every action in this session lands here, chained to the entry before it. Verify the chain any time.</p>
+
+        <div style="display:flex;gap:12px;align-items:center;margin-top:22px">
+          <x-import component-from-global-scope="MlaiLab.Button" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" variant="outline" on-click="{{ verifyChain }}" hint-size="140px,38px">Verify chain</x-import>
+          <sc-if value="{{ verified }}" hint-placeholder-val="{{ false }}">
+            <x-import component-from-global-scope="MlaiLab.Badge" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" variant="success" hint-size="auto,22px">{{ verifiedLabel }}</x-import>
+          </sc-if>
+        </div>
+
+        <div style="display:flex;flex-direction:column;margin-top:20px;border:1px solid var(--border);border-radius:10px;overflow:hidden">
+          <sc-for list="{{ audit }}" as="e" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:120px 110px 1fr minmax(140px,210px);gap:16px;padding:var(--crow);border-bottom:1px solid var(--border);background:var(--card);align-items:center">
+              <span style="font-family:var(--font-mono);font-size:11px;color:#64748B">{{ e.time }}</span>
+              <span style="font-family:var(--font-mono);font-size:11px;color: {{ e.color }}">{{ e.kind }}</span>
+              <span style="font-size:13px;color:#CBD5E1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ e.detail }}</span>
+              <span style="font-family:var(--font-mono);font-size:10px;color:#475569">{{ e.hash }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;density&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;comfortable&quot;, &quot;compact&quot;], &quot;default&quot;: &quot;comfortable&quot;, &quot;tsType&quot;: &quot;\&quot;comfortable\&quot; | \&quot;compact\&quot;&quot;, &quot;section&quot;: &quot;Feel&quot;}, &quot;accent&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;options&quot;: [&quot;#22D3EE&quot;, &quot;#A78BFA&quot;, &quot;#34D399&quot;, &quot;#FBBF24&quot;], &quot;default&quot;: &quot;#22D3EE&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Feel&quot;}, &quot;ambientGlow&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Feel&quot;}, &quot;latencyProfile&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;instant&quot;, &quot;realistic&quot;, &quot;stressed&quot;], &quot;default&quot;: &quot;realistic&quot;, &quot;tsType&quot;: &quot;\&quot;instant\&quot; | \&quot;realistic\&quot; | \&quot;stressed\&quot;&quot;, &quot;section&quot;: &quot;Simulation&quot;}}">
+class Component extends DCLogic {
+  state = {
+    view: "query",
+    query: "",
+    searching: false,
+    results: null,
+    latencyMs: null,
+    draft: "",
+    persona: "Abbey",
+    messages: [],
+    typing: false,
+    verified: false,
+    audit: [
+      { time: "session start", kind: "OPEN", detail: "Store opened · chain check passed on open", hash: "sha256:9f2c…a11b ← genesis", color: "#22D3EE" }
+    ]
+  };
+
+  corpus = [
+    { title: "WDBX: Weighted-Backtrace Memory Store", tag: "Core Architecture", chunk: "…hierarchical vector search with temporal–causal reranking; authority-weighted records keep provenance attached through retrieval…" },
+    { title: "Sparse Evidence Attention", tag: "Research", chunk: "…scores each candidate across eight independent criteria, then packs greedily under a hard token budget and a diversity constraint…" },
+    { title: "Graph Weights for Traceable Retrieval", tag: "Core Architecture", chunk: "…retrieval context stored as weighted directed paths, so answers preserve provenance, confidence, and rollback points…" },
+    { title: "Chunk Provenance in Long-Context Systems", tag: "Core Architecture", chunk: "…source segmentation, citation persistence, and drift detection for large private corpora in regulated environments…" },
+    { title: "Backtrace Confidence Signals", tag: "Research", chunk: "…source coverage, graph distance, contradiction checks, and model uncertainty combined into operator-visible signals…" },
+    { title: "Policy-Locked Tool Use", tag: "Safety", chunk: "…separating creative planning, compliance review, and execution so agents never inherit unrestricted tool authority…" },
+    { title: "Vector Index Maintenance Under Ingestion", tag: "Scalability", chunk: "…keeping high-volume indexes fresh while protecting recall quality, write latency, and audit history…" },
+    { title: "Offline-First AI Workflows", tag: "Engineering", chunk: "…packaging retrieval, inference, and audit services where cloud egress is limited or prohibited by policy…" }
+  ];
+
+  personaReplies = {
+    Abbey: "Think of it like a library that files books by meaning, not title — your query just walked the shelves. Each result above keeps a receipt: where the chunk came from, and how confident the graph is. Want me to unpack the scoring?",
+    Aviva: "Cosine over HNSW, k=5, ef=200. Scores above 0.80 are trustworthy; below 0.70, widen ef or rechunk. Provenance is on every row. Next question.",
+    Abi: "Routed this one to a blend — Aviva for the numbers, Abbey for the framing. The short version: results are ranked by cosine similarity, and every chunk carries its provenance path. Ask either of them to go deeper."
+  };
+
+  hash() {
+    const c = "0123456789abcdef";
+    let s = "";
+    for (let i = 0; i < 4; i++) s += c[Math.floor(Math.random() * 16)];
+    let e = "";
+    for (let i = 0; i < 4; i++) e += c[Math.floor(Math.random() * 16)];
+    return "sha256:" + s + "…" + e;
+  }
+
+  now() {
+    const d = new Date();
+    return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+  }
+
+  addAudit(kind, detail, color) {
+    const prev = this.state.audit[this.state.audit.length - 1];
+    const prevHash = prev.hash.split(" ")[0];
+    this.setState((s) => ({
+      audit: s.audit.concat([{ time: this.now(), kind: kind, detail: detail, hash: this.hash() + " ← " + prevHash.replace("sha256:", ""), color: color }]),
+      verified: false
+    }));
+  }
+
+  renderVals() {
+    const s = this.state;
+    const compact = (this.props.density ?? "comfortable") === "compact";
+    const profile = this.props.latencyProfile ?? "realistic";
+    const accent = this.props.accent ?? "#22D3EE";
+    const hexA = (hex, a) => {
+      const h = hex.replace("#", "");
+      return "rgba(" + parseInt(h.slice(0, 2), 16) + "," + parseInt(h.slice(2, 4), 16) + "," + parseInt(h.slice(4, 6), 16) + "," + a + ")";
+    };
+    const personaColors = {
+      Abbey: { dot: "#34D399", text: "#34D399" },
+      Aviva: { dot: "#A78BFA", text: "#A78BFA" },
+      Abi: { dot: "#22D3EE", text: "#22D3EE" }
+    };
+    const personaHints = {
+      Abbey: "Empathic Polymath — metaphor before precision.",
+      Aviva: "Unfiltered Expert — dense, direct, zero hedging.",
+      Abi: "Adaptive Moderator — routes and blends the other two."
+    };
+    const navDefs = [
+      { key: "query", label: "Query", dot: "#22D3EE" },
+      { key: "personas", label: "Personas", dot: "#34D399" },
+      { key: "audit", label: "Audit log", dot: "#A78BFA" }
+    ];
+    return {
+      isQuery: s.view === "query",
+      isPersonas: s.view === "personas",
+      isAudit: s.view === "audit",
+      cPad: compact ? "22px 26px" : "36px 40px",
+      cRow: compact ? "10px 14px" : "16px 18px",
+      cGap: compact ? "8px" : "12px",
+      cChat: compact ? "380px" : "440px",
+      cBody: compact ? "12px" : "13px",
+      cAccent: accent,
+      cAccentSoft: hexA(accent, 0.4),
+      cAccentGlow: hexA(accent, 0.09),
+      ambientGlow: !!(this.props.ambientGlow ?? false),
+      latColor: profile === "stressed" ? "#FBBF24" : accent,
+      navItems: navDefs.map((n) => ({
+        label: n.label,
+        dot: n.dot,
+        bg: s.view === n.key ? "rgba(255,255,255,0.07)" : "transparent",
+        color: s.view === n.key ? "#F1F5F9" : "#94A3B8",
+        go: () => this.setState({ view: n.key })
+      })),
+
+      query: s.query,
+      setQuery: (e) => this.setState({ query: e.target.value }),
+      queryKeyDown: (e) => { if (e.key === "Enter") this.doSearch(); },
+      runSearch: () => this.doSearch(),
+      searching: s.searching,
+      hasSearched: s.results !== null,
+      showResults: s.results !== null && !s.searching,
+      results: s.results || [],
+      latency: s.latencyMs === null ? "" : s.latencyMs + "ms",
+
+      draft: s.draft,
+      setDraft: (e) => this.setState({ draft: e.target.value }),
+      draftKeyDown: (e) => { if (e.key === "Enter") this.doSend(); },
+      send: () => this.doSend(),
+      typing: s.typing,
+      activePersona: s.persona,
+      personaHint: personaHints[s.persona],
+      personaTabs: ["Abbey", "Aviva", "Abi"].map((name) => ({
+        name: name,
+        dot: personaColors[name].dot,
+        bg: s.persona === name ? "rgba(255,255,255,0.07)" : "transparent",
+        border: s.persona === name ? personaColors[name].dot : "rgba(255,255,255,0.12)",
+        color: s.persona === name ? "#F1F5F9" : "#94A3B8",
+        pick: () => this.setState({ persona: name })
+      })),
+      messages: s.messages.map((m) => ({
+        who: m.who,
+        text: m.text,
+        align: m.user ? "flex-end" : "flex-start",
+        nameColor: m.user ? "#64748B" : (personaColors[m.who] || personaColors.Abi).text,
+        bg: m.user ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.03)",
+        border: m.user ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.08)"
+      })),
+
+      audit: s.audit.slice().reverse(),
+      auditCount: s.audit.length,
+      verifiedLabel: "✓ Chain intact — " + s.audit.length + " entries",
+      verified: s.verified,
+      verifyChain: () => {
+        this.addAudit("VERIFY", "Chain verification requested by operator", "#34D399");
+        setTimeout(() => this.setState({ verified: true }), 250);
+      }
+    };
+  }
+
+  doSearch() {
+    const q = this.state.query.trim();
+    if (!q || this.state.searching) return;
+    const profiles = { instant: { delay: 120, base: 0.4, spread: 1.2 }, realistic: { delay: 650, base: 2, spread: 7 }, stressed: { delay: 1800, base: 38, spread: 80 } };
+    const prof = profiles[this.props.latencyProfile ?? "realistic"] || profiles.realistic;
+    this.setState({ searching: true, results: null, latencyMs: null });
+    this.addAudit("SEARCH", 'k=5 query: "' + q + '"', "#22D3EE");
+    setTimeout(() => {
+      let seed = 0;
+      for (let i = 0; i < q.length; i++) seed = (seed * 31 + q.charCodeAt(i)) % 997;
+      const scored = this.corpus.map((d, i) => {
+        const jitter = ((seed * (i + 3)) % 100) / 100;
+        return Object.assign({}, d, { s: 0.68 + jitter * 0.29 });
+      }).sort((a, b) => b.s - a.s).slice(0, 5);
+      const results = scored.map((d, i) => ({
+        title: d.title,
+        tag: d.tag,
+        chunk: d.chunk,
+        score: d.s.toFixed(3),
+        prov: "provenance: shard-0" + ((seed + i) % 4) + " → block " + (1200 + ((seed * (i + 7)) % 800)) + " → " + this.hash()
+      }));
+      this.setState({ searching: false, results: results, latencyMs: (prof.base + ((seed % 70) / 70) * prof.spread).toFixed(1) });
+    }, prof.delay);
+  }
+
+  doSend() {
+    const t = this.state.draft.trim();
+    if (!t || this.state.typing) return;
+    const persona = this.state.persona;
+    this.setState((s) => ({ messages: s.messages.concat([{ who: "You", text: t, user: true }]), draft: "", typing: true }));
+    this.addAudit("CHAT", persona + ' ← "' + t + '"', "#34D399");
+    setTimeout(() => {
+      this.setState((s) => ({
+        messages: s.messages.concat([{ who: persona, text: this.personaReplies[persona], user: false }]),
+        typing: false
+      }));
+    }, this.props.latencyProfile === "stressed" ? 2600 : this.props.latencyProfile === "instant" ? 300 : 1100);
+  }
+}
+</script>
+</body>
+</html>

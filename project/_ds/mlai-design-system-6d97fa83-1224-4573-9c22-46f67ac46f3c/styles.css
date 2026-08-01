@@ -1,0 +1,15 @@
+/* MLAI Design System — combined stylesheet.
+   One link covers the merged brand:
+   · vendor theme tokens + webfonts (Lab primitives / Site sections)
+   · the --tw-* engine-channel registry (intentionally uncategorized internals)
+   · colors_and_type.css — the canonical MLAI brand tokens + semantic element styles,
+     loaded LAST so brand values win where names collide (--font-*, --radius-*).
+   The vendors' full component CSS (utilities, state variants) is embedded in the
+   compiled _ds_bundle.js (components/vendor/*Runtime) and injected at runtime as the
+   first stylesheet in <head>, so everything linked here stays later in the cascade. */
+@import url("vendor/lab/fonts/fonts.css");
+@import url("vendor/lab/theme.css");
+@import url("vendor/site/fonts/fonts.css");
+@import url("vendor/site/theme.css");
+@import url("vendor/tw-token-registry.css");
+@import url("colors_and_type.css");

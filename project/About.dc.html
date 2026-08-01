@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/lab/fonts/fonts.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/lab/theme.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/site/fonts/fonts.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/site/theme.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/tw-token-registry.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/styles.css">
+  <script src="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js"></script>
+  <script src="router.js"></script>
+  <style>
+    body { margin: 0; background: #05070B; color: #CBD5E1; }
+    a { color: #00D4FF; text-decoration: none; }
+    a:hover { color: #FFFFFF; }
+    @keyframes mlaiRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
+</helmet>
+<div style="min-height:100vh;background:#05070B;color:#CBD5E1;font-family:'Manrope',system-ui,sans-serif" data-screen-label="Company">
+  <x-import component-from-global-scope="MLAI.Nav" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,64px"></x-import>
+
+  <div style="position:relative;overflow:hidden">
+    <x-import component-from-global-scope="mlai-galaxy" from="galaxy.js" accent="#10B981" accent2="#7C3AED" density="60" style="position:absolute;inset:0" hint-size="100%,480px"></x-import>
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 35% 20%,black,transparent);mask-image:radial-gradient(ellipse 70% 70% at 35% 20%,black,transparent)"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 30% -10%,rgba(16,185,129,0.12),transparent 62%)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(180deg,transparent,#05070B)"></div>
+    <div style="position:relative;max-width:1152px;margin:0 auto;padding:124px 24px 48px">
+      <x-import component-from-global-scope="MLAI.Eyebrow" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abbey" hint-size="auto,20px">Company</x-import>
+      <h1 style="font-family:'Sora',sans-serif;font-weight:700;font-size:64px;line-height:1.06;letter-spacing:-0.03em;color:#FFFFFF;margin:22px 0 0;max-width:900px;animation:mlaiRise 700ms cubic-bezier(0.22,1,0.36,1) both">Machine Learning Advanced Innovations</h1>
+      <p style="font-size:18px;line-height:1.7;color:#94A3B8;max-width:680px;margin:20px 0 0">Privacy-first AI infrastructure for Apple Silicon. Built on Apple's public frameworks — Metal, Accelerate, and Core ML.</p>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="Principles" title="How we hold ourselves" accent="abbey" hint-size="100%,380px">
+    <x-import component-from-global-scope="MLAI.DeepDive" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abbey" cols="{{ 3 }}" dc-props="{{ principles }}" hint-size="100%,220px"></x-import>
+  </x-import>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="Facts" title="The company on paper" accent="abbey" hint-size="100%,360px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start">
+      <x-import component-from-global-scope="MLAI.SpecList" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" dc-props="{{ facts }}" hint-size="100%,220px"></x-import>
+      <x-import component-from-global-scope="MLAI.Callout" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abbey" label="Claims discipline" hint-size="100%,160px">Every number on this site carries a provenance tag — measured, target, or reported. Goals are framed as goals, never as achievements.</x-import>
+    </div>
+  </x-import>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="FAQ" title="Common questions" accent="abbey" hint-size="100%,520px">
+    <x-import component-from-global-scope="MLAI.FAQList" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abbey" dc-props="{{ faq }}" hint-size="100%,400px"></x-import>
+  </x-import>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="Contact" title="Request access" lead="Tell us what you're building and where the data has to live." accent="wdbx" hint-size="100%,280px">
+    <div id="contact" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+      <a href="mailto:hello@mlai.example" style="border:1px solid #00D4FF;background:#00D4FF;color:#05070B;padding:12px 22px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em" style-hover="background:transparent;color:#00D4FF">hello@mlai.example</a>
+      <a href="/research" style="border:1px solid rgba(255,255,255,0.15);color:#CBD5E1;padding:12px 22px;font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.15em" style-hover="border-color:rgba(255,255,255,0.4);color:#FFFFFF">Read the research →</a>
+    </div>
+  </x-import>
+
+  <x-import component-from-global-scope="MLAI.Footer" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,320px"></x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      principles: {
+        items: [
+          { title: "Disciplined secrecy", body: "We publish benchmarks, not roadmaps. What ships speaks; what's in flight stays quiet until it's real." },
+          { title: "Mission stewardship", body: "Privacy-first is an architecture decision, not a marketing position. Data never leaves the device unless the owner sends it." },
+          { title: "Operational velocity", body: "Small team, systems languages, zero ceremony. We measure in p50s and ship in weeks." }
+        ]
+      },
+      facts: {
+        rows: [
+          { k: "Legal name", v: "Machine Learning Advanced Innovations, Inc." },
+          { k: "Entity", v: "Delaware C-Corp" },
+          { k: "Location", v: "Orlando, FL" },
+          { k: "Focus", v: "Privacy-first AI infrastructure for Apple Silicon" },
+          { k: "Languages", v: "Zig, Swift, TypeScript" }
+        ]
+      },
+      faq: {
+        items: [
+          { q: "Does my data ever leave my device?", a: "Not unless you send it. Storage, indexing, and inference run locally; cloud LLM providers are optional and explicit." },
+          { q: "What platforms are supported?", a: "macOS and iOS natively via Swift 6 SDKs. WDBX backends target Metal, CUDA, and Vulkan. Abbey ships on Discord today, with Swift and Python ports in progress." },
+          { q: "Are the benchmark numbers verified?", a: "Every figure carries a provenance tag. Measured means reproduced on hardware with the harness in the repo; target is an engineering goal; reported is a cited internal figure." },
+          { q: "How do the three personas differ?", a: "They're trained registers, not prompt templates. Abbey optimizes for empathy, Aviva for density and speed, and Abi routes between them per query." },
+          { q: "How do I get access?", a: "Email us with what you're building and where the data has to live. We onboard small batches while the SDKs harden." }
+        ]
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/lab/fonts/fonts.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/lab/theme.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/site/fonts/fonts.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/site/theme.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/tw-token-registry.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/styles.css">
+  <script src="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js"></script>
+  <script src="router.js"></script>
+  <style>
+    body { margin: 0; background: #05070B; color: #CBD5E1; }
+    a { color: #00D4FF; text-decoration: none; }
+    a:hover { color: #FFFFFF; }
+    @keyframes mlaiRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
+</helmet>
+<div style="min-height:100vh;background:#05070B;color:#CBD5E1;font-family:'Manrope',system-ui,sans-serif" data-screen-label="Investors">
+  <x-import component-from-global-scope="MLAI.Nav" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,64px"></x-import>
+
+  <div style="position:relative;overflow:hidden">
+    <x-import component-from-global-scope="mlai-galaxy" from="galaxy.js" accent="#7C3AED" accent2="#10B981" density="60" style="position:absolute;inset:0" hint-size="100%,480px"></x-import>
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 35% 20%,black,transparent);mask-image:radial-gradient(ellipse 70% 70% at 35% 20%,black,transparent)"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 30% -10%,rgba(124,58,237,0.12),transparent 62%)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(180deg,transparent,#05070B)"></div>
+    <div style="position:relative;max-width:1152px;margin:0 auto;padding:124px 24px 48px">
+      <x-import component-from-global-scope="MLAI.Eyebrow" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abi" hint-size="auto,20px">Investors</x-import>
+      <h1 style="font-family:'Sora',sans-serif;font-weight:700;font-size:64px;line-height:1.06;letter-spacing:-0.03em;color:#FFFFFF;margin:22px 0 0;max-width:900px;animation:mlaiRise 700ms cubic-bezier(0.22,1,0.36,1) both">Infrastructure for resilient intelligence.</h1>
+      <p style="font-size:18px;line-height:1.7;color:#94A3B8;max-width:680px;margin:20px 0 0">The AI stack is re-centralizing around a handful of clouds while the hardware in everyone's pocket gets fast enough not to need them. We build for the second curve.</p>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="Thesis" title="Why on-device wins" accent="abi" hint-size="100%,400px">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <x-import component-from-global-scope="MLAI.FeatureCard" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" title="Privacy is becoming law" desc="Regulated industries increasingly cannot send corpora to third-party clouds. On-device is the compliance story, not a feature." hint-size="100%,160px"></x-import>
+      <x-import component-from-global-scope="MLAI.FeatureCard" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abi" title="The silicon is already shipped" desc="Apple Silicon's unified memory and Neural Engine sit idle in hundreds of millions of devices. We write the software that spends them." hint-size="100%,160px"></x-import>
+      <x-import component-from-global-scope="MLAI.FeatureCard" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abbey" title="Zero marginal cloud cost" desc="Local-first inference and storage carry no per-query COGS. Unit economics improve with adoption instead of degrading." hint-size="100%,160px"></x-import>
+    </div>
+  </x-import>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="The numbers" title="What we can show today" lead="Provenance-tagged, reproducible on request." accent="wdbx" hint-size="100%,400px">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      <x-import component-from-global-scope="MLAI.StatBlock" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" dc-props="{{ statA }}" hint-size="100%,140px"></x-import>
+      <x-import component-from-global-scope="MLAI.StatBlock" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" dc-props="{{ statB }}" hint-size="100%,140px"></x-import>
+      <x-import component-from-global-scope="MLAI.StatBlock" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abi" dc-props="{{ statC }}" hint-size="100%,140px"></x-import>
+      <x-import component-from-global-scope="MLAI.StatBlock" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abi" dc-props="{{ statD }}" hint-size="100%,140px"></x-import>
+    </div>
+    <div style="margin-top:24px">
+      <x-import component-from-global-scope="MLAI.ProvLegend" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,32px"></x-import>
+    </div>
+  </x-import>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="On paper" title="The company" accent="abbey" hint-size="100%,420px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start">
+      <x-import component-from-global-scope="MLAI.SpecList" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" dc-props="{{ facts }}" hint-size="100%,240px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <x-import component-from-global-scope="MLAI.Callout" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abbey" label="How we report" hint-size="100%,150px">We publish benchmarks, not roadmaps. Every figure an investor sees carries the same measured / target / reported discipline as this site.</x-import>
+        <div>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:#64748B;margin:0 0 12px">Covered by</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#94A3B8;margin:0">
+            <span>Cult of Mac</span>
+            <span style="color:#334155"> · </span>
+            <span>PhoneArena</span>
+            <span style="color:#334155"> · </span>
+            <span>TechTimes</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </x-import>
+
+  <div style="max-width:1152px;margin:0 auto;padding:0 24px 56px">
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="/contact" style="border:1px solid #00D4FF;background:#00D4FF;color:#05070B;padding:13px 26px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;transition:all 180ms ease" style-hover="background:transparent;color:#00D4FF">Request the deck</a>
+      <a href="/research" style="border:1px solid rgba(255,255,255,0.16);color:#CBD5E1;padding:13px 26px;font-family:'JetBrains Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.15em;transition:all 180ms ease" style-hover="border-color:rgba(255,255,255,0.45);color:#FFFFFF">Read the research →</a>
+    </div>
+  </div>
+
+  <div style="max-width:1152px;margin:0 auto;padding:0 24px 96px">
+    <x-import component-from-global-scope="MLAI.NextUp" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" dc-props="{{ nextLinks }}" hint-size="100%,180px"></x-import>
+  </div>
+
+  <x-import component-from-global-scope="MLAI.Footer" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,320px"></x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      statA: { stat: { value: "2.3ms", label: "p50 search latency", tag: "measured" } },
+      statB: { stat: { value: "6–12×", label: "Faster search vs cloud competitors", tag: "measured" } },
+      statC: { stat: { value: "84×", label: "GPU MatMul 1024×1024", tag: "measured" } },
+      statD: { stat: { value: "295×", label: "MatMul 4096×4096 — benchmark track", tag: "target", note: "Engineering goal" } },
+      facts: {
+        rows: [
+          { k: "Legal name", v: "Machine Learning Advanced Innovations, Inc." },
+          { k: "Entity", v: "Delaware C-Corp" },
+          { k: "Location", v: "Orlando, FL" },
+          { k: "Products", v: "WDBX · ABI Framework · Abbey" },
+          { k: "Languages", v: "Zig, Swift, TypeScript" },
+          { k: "Model", v: "SDK licensing + integration services" }
+        ]
+      },
+      nextLinks: {
+        items: [
+          { label: "Research", href: "/research", desc: "What we've published and can reproduce.", accent: "abi" },
+          { label: "Company", href: "/company", desc: "Principles and the FAQ.", accent: "abbey" }
+        ]
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

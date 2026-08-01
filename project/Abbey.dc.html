@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/lab/fonts/fonts.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/lab/theme.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/site/fonts/fonts.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/site/theme.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/vendor/tw-token-registry.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/styles.css">
+  <script src="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js"></script>
+  <script src="router.js"></script>
+  <style>
+    body { margin: 0; background: #05070B; color: #CBD5E1; }
+    a { color: #00D4FF; text-decoration: none; }
+    a:hover { color: #FFFFFF; }
+    @keyframes mlaiRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
+</helmet>
+<div style="min-height:100vh;background:#05070B;color:#CBD5E1;font-family:'Manrope',system-ui,sans-serif" data-screen-label="Abbey">
+  <x-import component-from-global-scope="MLAI.Nav" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,64px"></x-import>
+
+  <div style="position:relative;overflow:hidden">
+    <x-import component-from-global-scope="mlai-galaxy" from="galaxy.js" accent="#10B981" accent2="#00D4FF" density="60" style="position:absolute;inset:0" hint-size="100%,480px"></x-import>
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 35% 20%,black,transparent);mask-image:radial-gradient(ellipse 70% 70% at 35% 20%,black,transparent)"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 30% -10%,rgba(16,185,129,0.12),transparent 62%)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(180deg,transparent,#05070B)"></div>
+    <div style="position:relative;max-width:1152px;margin:0 auto;padding:124px 24px 48px">
+      <x-import component-from-global-scope="MLAI.Eyebrow" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abbey" hint-size="auto,20px">Personas</x-import>
+      <h1 style="font-family:'Sora',sans-serif;font-weight:700;font-size:64px;line-height:1.06;letter-spacing:-0.03em;color:#FFFFFF;margin:22px 0 0;max-width:900px;animation:mlaiRise 700ms cubic-bezier(0.22,1,0.36,1) both">An assistant that remembers — locally.</h1>
+      <p style="font-size:18px;line-height:1.7;color:#94A3B8;max-width:680px;margin:20px 0 0">Self-learning, emotionally aware AI assistant with persistent vector-backed memory. Every conversation stays on hardware you control.</p>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="Three minds" title="One system, three registers" lead="Each persona is a trained register with its own loss terms — not a prompt template." accent="abbey" hint-size="100%,520px">
+    <x-import component-from-global-scope="MLAI.PersonaCard" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,340px"></x-import>
+    <div style="margin-top:32px">
+      <x-import component-from-global-scope="MLAI.PullQuote" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abbey" hint-size="100%,120px">Think of a vector database as a library that files books by meaning, not title.</x-import>
+    </div>
+  </x-import>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="Capabilities" title="What Abbey can do" lead="Memory, providers, platforms, and tone — all local-first." accent="abbey" hint-size="100%,440px">
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px">
+      <x-import component-from-global-scope="MLAI.FeatureCard" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abbey" title="Vector-based semantic memory" desc="Powered by WDBX. Remembers conversations, learns preferences — all stored locally." hint-size="100%,150px"></x-import>
+      <x-import component-from-global-scope="MLAI.FeatureCard" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abbey" title="Multi-provider LLM support" desc="OpenAI, Anthropic, and local models via Ollama. Seamless provider switching." hint-size="100%,150px"></x-import>
+      <x-import component-from-global-scope="MLAI.FeatureCard" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abbey" title="Multi-platform interface" desc="Discord-native today. HTTP REST for apps. Voice capable." hint-size="100%,150px"></x-import>
+      <x-import component-from-global-scope="MLAI.FeatureCard" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abbey" title="Emotional intelligence" desc="Technical precision balanced with empathetic communication, tuned per persona." hint-size="100%,150px"></x-import>
+    </div>
+  </x-import>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="Evaluation" title="Persona scores" lead="Internal eval harness; reported figures." accent="abbey" hint-size="100%,400px">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      <x-import component-from-global-scope="MLAI.StatBlock" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abbey" dc-props="{{ statA }}" hint-size="100%,140px"></x-import>
+      <x-import component-from-global-scope="MLAI.StatBlock" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="abbey" dc-props="{{ statB }}" hint-size="100%,140px"></x-import>
+      <x-import component-from-global-scope="MLAI.StatBlock" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" dc-props="{{ statC }}" hint-size="100%,140px"></x-import>
+      <x-import component-from-global-scope="MLAI.StatBlock" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" accent="wdbx" dc-props="{{ statD }}" hint-size="100%,140px"></x-import>
+    </div>
+    <div style="margin-top:24px">
+      <x-import component-from-global-scope="MLAI.ProvLegend" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,32px"></x-import>
+    </div>
+  </x-import>
+
+  <x-import component-from-global-scope="MLAI.Section" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" eyebrow="Platforms" title="Where Abbey runs" accent="abbey" hint-size="100%,320px">
+    <x-import component-from-global-scope="MLAI.SpecList" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" dc-props="{{ platforms }}" hint-size="100%,180px"></x-import>
+  </x-import>
+
+  <div style="max-width:1152px;margin:0 auto;padding:0 24px 96px">
+    <x-import component-from-global-scope="MLAI.NextUp" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" dc-props="{{ nextLinks }}" hint-size="100%,180px"></x-import>
+  </div>
+
+  <x-import component-from-global-scope="MLAI.Footer" from="_ds/mlai-design-system-6d97fa83-1224-4573-9c22-46f67ac46f3c/_ds_bundle.js" hint-size="100%,320px"></x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      statA: { stat: { value: "0.92", label: "Abbey empathy score", tag: "reported", note: "Internal eval harness" } },
+      statB: { stat: { value: "90.5%", label: "Abbey technical accuracy", tag: "reported", note: "Internal eval harness" } },
+      statC: { stat: { value: "30%", label: "Aviva latency reduction vs hedged responses", tag: "reported" } },
+      statD: { stat: { value: "40%", label: "Aviva content density gain", tag: "reported" } },
+      platforms: {
+        rows: [
+          { k: "Discord (Bun + discord.js v14)", v: "Shipping" },
+          { k: "Swift 6 / Vapor 4 / DiscordBM port", v: "In progress" },
+          { k: "Python + Twitch expansion", v: "In progress" }
+        ]
+      },
+      nextLinks: {
+        items: [
+          { label: "WDBX", href: "/wdbx", desc: "The memory Abbey trusts.", accent: "wdbx" },
+          { label: "Research", href: "/research", desc: "The papers behind the personas.", accent: "abi" }
+        ]
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
