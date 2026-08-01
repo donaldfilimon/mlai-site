@@ -82,10 +82,6 @@ export function Nav() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     document.addEventListener("keydown", onKey);
@@ -135,7 +131,9 @@ export function Nav() {
           className="relative h-8 w-8 lg:hidden"
         >
           <span className={`absolute left-1 right-1 top-2.5 h-px bg-white transition-transform duration-200 ${open ? "translate-y-[3px] rotate-45" : ""}`} />
-          <span className={`absolute left-1 right-1 bottom-2.5 h-px bg-white transition-transform duration-200 ${open ? "-translate-y-[3px] -rotate-45" : ""}`} />
+          <span
+            className={`absolute left-1 right-1 bottom-2.5 h-px bg-white transition-transform duration-200 ${open ? "-translate-y-[3px] -rotate-45" : ""}`}
+          />
         </button>
       </div>
       <div id="mobile-menu" className={`overflow-hidden border-t border-line bg-ink/95 backdrop-blur-md lg:hidden ${open ? "block" : "hidden"}`}>
@@ -144,6 +142,7 @@ export function Nav() {
             <Link
               key={item.href}
               to={item.href}
+              onClick={() => setOpen(false)}
               aria-current={isActive(item.href) ? "page" : undefined}
               className={`flex items-center justify-between border-b border-line/60 py-3 font-mono text-sm uppercase tracking-[0.15em] last:border-0 ${
                 isActive(item.href) ? "text-white" : "text-slate-400"
@@ -155,7 +154,11 @@ export function Nav() {
               </span>
             </Link>
           ))}
-          <Link to="/contact" className="mt-3 mb-2 border border-wdbx bg-wdbx px-4 py-2.5 text-center font-mono text-sm font-semibold uppercase tracking-[0.15em] text-ink">
+          <Link
+            to="/contact"
+            onClick={() => setOpen(false)}
+            className="mt-3 mb-2 border border-wdbx bg-wdbx px-4 py-2.5 text-center font-mono text-sm font-semibold uppercase tracking-[0.15em] text-ink"
+          >
             Contact
           </Link>
         </nav>
@@ -256,17 +259,7 @@ export function FeatureCard({ title, desc, accent }: { title: ReactNode; desc: R
   );
 }
 
-export function DataTable({
-  cols,
-  rows,
-  accent = "wdbx",
-  highlightCol,
-}: {
-  cols: string[];
-  rows: string[][];
-  accent?: Accent;
-  highlightCol?: number;
-}) {
+export function DataTable({ cols, rows, accent = "wdbx", highlightCol }: { cols: string[]; rows: string[][]; accent?: Accent; highlightCol?: number }) {
   return (
     <div className="surface accent-edge overflow-x-auto" style={{ ["--accent" as string]: accentHex[accent] }}>
       <table className="w-full font-mono text-sm">

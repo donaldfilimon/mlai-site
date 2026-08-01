@@ -13,15 +13,15 @@ const logLines = [
 
 /** Benchmark terminal: four tagged hero stats over a log that types itself in
     one line every 700ms. Reduced motion renders the finished log immediately. */
+const prefersReducedMotion = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 export function HeroBench() {
-  const [visible, setVisible] = useState(1);
+  // Reduced motion starts on the finished log rather than animating to it, so the
+  // initial state is derived up front instead of corrected inside an effect.
+  const [visible, setVisible] = useState(() => (prefersReducedMotion() ? logLines.length : 1));
 
   useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      setVisible(logLines.length);
-      return;
-    }
+    if (prefersReducedMotion()) return;
     const id = setInterval(() => {
       setVisible((v) => (v >= logLines.length ? v : v + 1));
     }, 700);

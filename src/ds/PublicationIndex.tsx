@@ -27,10 +27,7 @@ export function PublicationIndex() {
       </div>
       <div className="border border-line bg-panel">
         {shown.map((pub, i) => (
-          <div
-            key={pub.title}
-            className={`grid gap-2 px-6 py-5 md:grid-cols-[110px_150px_1fr] md:items-baseline ${i > 0 ? "border-t border-line" : ""}`}
-          >
+          <div key={pub.title} className={`grid gap-2 px-6 py-5 md:grid-cols-[110px_150px_1fr] md:items-baseline ${i > 0 ? "border-t border-line" : ""}`}>
             <span className="font-mono text-[11px] text-slate-500">{pub.date}</span>
             <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-abi">{pub.tag}</span>
             <div>

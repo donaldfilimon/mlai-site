@@ -22,7 +22,8 @@ export function Galaxy({ accent = "#00D4FF", accent2 = "#7C3AED", density = 70, 
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
-    let w = 0, h = 0;
+    let w = 0,
+      h = 0;
     let pts: Pt[] = [];
 
     const seed = () => {
@@ -55,15 +56,19 @@ export function Galaxy({ accent = "#00D4FF", accent2 = "#7C3AED", density = 70, 
       ctx.clearRect(0, 0, w, h);
       if (!reduced) {
         for (const p of pts) {
-          p.x += p.vx; p.y += p.vy;
-          if (p.x < -10) p.x = w + 10; if (p.x > w + 10) p.x = -10;
-          if (p.y < -10) p.y = h + 10; if (p.y > h + 10) p.y = -10;
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < -10) p.x = w + 10;
+          if (p.x > w + 10) p.x = -10;
+          if (p.y < -10) p.y = h + 10;
+          if (p.y > h + 10) p.y = -10;
         }
       }
       ctx.lineWidth = 1;
       for (let i = 0; i < pts.length; i++) {
         for (let j = i + 1; j < pts.length; j++) {
-          const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+          const dx = pts[i].x - pts[j].x,
+            dy = pts[i].y - pts[j].y;
           const d = Math.hypot(dx, dy);
           if (d < R) {
             ctx.strokeStyle = "rgba(148,163,184," + (0.16 * (1 - d / R)).toFixed(3) + ")";
@@ -85,17 +90,19 @@ export function Galaxy({ accent = "#00D4FF", accent2 = "#7C3AED", density = 70, 
       if (!reduced) raf = requestAnimationFrame(tick);
     };
 
-    const ro = new ResizeObserver(() => { resize(); cancelAnimationFrame(raf); raf = requestAnimationFrame(tick); });
+    const ro = new ResizeObserver(() => {
+      resize();
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(tick);
+    });
     ro.observe(canvas);
     resize();
     raf = requestAnimationFrame(tick);
-    return () => { cancelAnimationFrame(raf); ro.disconnect(); };
+    return () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+    };
   }, [accent, accent2, density]);
 
-  return (
-    <canvas
-      ref={ref}
-      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", ...style }}
-    />
-  );
+  return <canvas ref={ref} aria-hidden style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", ...style }} />;
 }

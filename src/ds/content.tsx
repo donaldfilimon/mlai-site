@@ -6,17 +6,7 @@ export function Prose({ children, className = "" }: { children: ReactNode; class
   return <div className={`max-w-2xl space-y-4 text-[15px] leading-[1.75] text-slate-400 ${className}`}>{children}</div>;
 }
 
-export function SplitSection({
-  kicker,
-  title,
-  accent = "wdbx",
-  children,
-}: {
-  kicker?: ReactNode;
-  title: ReactNode;
-  accent?: Accent;
-  children: ReactNode;
-}) {
+export function SplitSection({ kicker, title, accent = "wdbx", children }: { kicker?: ReactNode; title: ReactNode; accent?: Accent; children: ReactNode }) {
   return (
     <div className="grid gap-8 border-t border-line py-12 md:grid-cols-[0.4fr_0.6fr]">
       <div>
@@ -33,15 +23,7 @@ export function SplitSection({
   );
 }
 
-export function DeepDive({
-  items,
-  accent = "wdbx",
-  cols = 2,
-}: {
-  items: { title: string; body: string; meta?: string }[];
-  accent?: Accent;
-  cols?: 2 | 3;
-}) {
+export function DeepDive({ items, accent = "wdbx", cols = 2 }: { items: { title: string; body: string; meta?: string }[]; accent?: Accent; cols?: 2 | 3 }) {
   return (
     <div className={`grid gap-5 ${cols === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
       {items.map((it) => (

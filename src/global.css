@@ -1,15 +1,187 @@
+/* Page-level styles for the MLAI site.
+   Loaded after the vendored design-system stylesheet so these win where they overlap. */
+
 body {
   margin: 0;
   background: #05070b;
   color: #cbd5e1;
 }
-a { color: #00d4ff; text-decoration: none; }
-a:hover { color: #ffffff; }
+
+a {
+  color: #00d4ff;
+  text-decoration: none;
+}
+a:hover {
+  color: #ffffff;
+}
+
+/* ── Motion ─────────────────────────────────────────────────────────────
+   The signature entrance: fade + 18px rise, 700ms, staggered ~90ms. */
 
 @keyframes mlaiRise {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
+
+/* Section reveal on scroll. Scroll-driven where supported, so it costs no JS
+   and degrades to "already visible" everywhere else. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .mlai-reveal {
+      animation: mlaiRise 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0 entry 38%;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ── Focus ──────────────────────────────────────────────────────────────
+   Every interactive element in the design is custom-styled, which kills the
+   UA focus ring. Put a visible one back for keyboard users only. */
+
+:focus-visible {
+  outline: 2px solid #00d4ff;
+  outline-offset: 3px;
+}
+
+.mlai-skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 100;
+  background: #00d4ff;
+  color: #05070b;
+  padding: 10px 18px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: top 160ms ease;
+}
+.mlai-skip-link:focus {
+  top: 12px;
+  color: #05070b;
+}
+
+/* ── Interactive states ─────────────────────────────────────────────────
+   The prototypes expressed these as `style-hover` attributes, which the design
+   tool resolved at render time. React has no inline-style hover, and an inline
+   `color` beats the global `a:hover` rule — so hover has to live in real CSS. */
+
+.mlai-pill {
+  display: inline-block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 13px 26px;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+  border: 1px solid transparent;
+}
+
+/* Primary: accent fill with ink text, inverting to an accent outline on hover. */
+.mlai-pill-primary {
+  border-color: var(--pill-accent, #00d4ff);
+  background: var(--pill-accent, #00d4ff);
+  color: #05070b;
+  font-weight: 600;
+}
+.mlai-pill-primary:hover {
+  background: transparent;
+  color: var(--pill-accent, #00d4ff);
+}
+
+/* Secondary: hairline outline that strengthens to 45% white on hover. */
+.mlai-pill-ghost {
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #cbd5e1;
+}
+.mlai-pill-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+}
+
+/* Accent text links ("Meet Abbey →") go white on hover. */
+.mlai-link-accent {
+  transition: color 180ms ease;
+}
+.mlai-link-accent:hover {
+  color: #ffffff;
+}
+
+/* Product cards carry the surface-hover lift from the DS; this adds the accent
+   tagline brightening so the whole card responds as one object. */
+.mlai-card:hover .mlai-card-enter {
+  color: #ffffff;
+}
+.mlai-card-enter {
+  transition: color 180ms ease;
+}
+
+/* ── Layout ─────────────────────────────────────────────────────────────
+   The prototypes were desktop-fixed. These two primitives carry the responsive
+   behavior so pages can stay declarative and keep their inline styles. */
+
+/* Auto-fitting card grid. --min sets the point a column is allowed to wrap. */
+.mlai-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min, 260px)), 1fr));
+}
+
+/* Two-up split that stacks on narrow screens. --cols keeps the desktop ratio. */
+.mlai-split {
+  display: grid;
+  gap: 32px;
+  align-items: start;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px) {
+  .mlai-split {
+    grid-template-columns: var(--cols, 1fr 1fr);
+  }
+}
+
+/* Tables are the one thing that genuinely cannot reflow — let them scroll
+   inside their own surface rather than pushing the page sideways. */
+.mlai-scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Nothing should ever push the document sideways. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ── Contrast ───────────────────────────────────────────────────────────
+   The two dimmest steps of the design's text ramp fail WCAG AA against the
+   near-black canvas — #64748B measures 4.24:1 and #475569 only 2.66:1, both
+   used at 10–12px. These lift them to 5.82:1 and 4.82:1 while keeping five
+   visually distinct steps. Overriding the vendored utilities here rather than
+   editing src/ds/mlai-site.css keeps that generated file re-extractable. */
+
+.text-slate-500 {
+  color: #7c8ba1;
+}
+.text-slate-600 {
+  color: #6e7d93;
 }

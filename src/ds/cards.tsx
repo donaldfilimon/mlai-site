@@ -83,9 +83,7 @@ export function ThroughputCard() {
                   className="h-full rounded-sm"
                   style={{
                     width: `${pct}%`,
-                    background: isTarget
-                      ? "repeating-linear-gradient(90deg, #7C3AED, #7C3AED 4px, transparent 4px, transparent 7px)"
-                      : "#7C3AED",
+                    background: isTarget ? "repeating-linear-gradient(90deg, #7C3AED, #7C3AED 4px, transparent 4px, transparent 7px)" : "#7C3AED",
                   }}
                 />
               </div>
