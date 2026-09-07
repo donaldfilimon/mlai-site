@@ -1,28 +1,85 @@
 /* mlai-site webfonts — Sora (display), Manrope (body), JetBrains Mono (labels).
-   The woff2 files ship with the design-system bundle (vendor/site/fonts). The
-   --font-* tokens mirror vendor/site/theme.css; the vendored utility stylesheet
-   resolves .font-display / .font-mono through them. */
+   The --font-* tokens mirror vendor/site/theme.css; the vendored utility
+   stylesheet resolves .font-display / .font-mono through them.
+
+   These files replace the three woff2s that shipped inside the design-system
+   bundle. Those were the wrong subset shard of each family — between them they
+   mapped one printable ASCII character ("A"), plus Latin Extended-A and Cyrillic
+   tails — so every glyph on the site fell back to the system stack and none of
+   this typography actually rendered. Nothing catches that: the build succeeds
+   and the page still looks deliberate, just in the wrong typefaces.
+
+   Replaced with the latin and latin-ext shards from @fontsource-variable, which
+   carry the same family names and the same weight axes the design declares, so
+   every consumer is unchanged. Vendored as files rather than taken as a runtime
+   dependency, keeping src/ds/ self-contained. If you re-extract the design
+   system, check the fonts before trusting them: run the coverage check in
+   CLAUDE.md. */
 
 @font-face {
   font-family: "Sora";
   font-style: normal;
   font-weight: 100 800;
   font-display: swap;
-  src: url("./fonts/sora.woff2") format("woff2");
+  src: url("./fonts/sora-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
 }
+
+@font-face {
+  font-family: "Sora";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("./fonts/sora-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 @font-face {
   font-family: "Manrope";
   font-style: normal;
   font-weight: 200 800;
   font-display: swap;
-  src: url("./fonts/manrope.woff2") format("woff2");
+  src: url("./fonts/manrope-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
 }
+
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("./fonts/manrope-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 @font-face {
   font-family: "JetBrains Mono";
   font-style: normal;
   font-weight: 100 800;
   font-display: swap;
-  src: url("./fonts/jbmono.woff2") format("woff2");
+  src: url("./fonts/jbmono-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("./fonts/jbmono-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 :root {

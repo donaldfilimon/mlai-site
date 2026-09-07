@@ -87,7 +87,7 @@ system bundle that shipped with the handoff
 | `HeroBench.tsx`        | the self-typing benchmark terminal                                                                                                                                                               |
 | `PublicationIndex.tsx` | the filterable publication list                                                                                                                                                                  |
 | `mlai-site.css`        | the component stylesheet the bundle injected at runtime, extracted verbatim — Tailwind preflight, brand utilities, and the `surface` / `surface-hover` / `accent-edge` / `brand-seam` primitives |
-| `fonts.css`, `fonts/`  | Sora, Manrope, JetBrains Mono (woff2, from the bundle)                                                                                                                                           |
+| `fonts.css`, `fonts/`  | Sora, Manrope, JetBrains Mono (woff2) — **not** the bundle's, which had no usable glyphs; see CLAUDE.md                                                                                          |
 
 Markup and class names are unchanged from the bundle, so the components render exactly as
 they did in the prototype. Two deliberate changes: `Nav` / `Footer` / `NextUp` link through
