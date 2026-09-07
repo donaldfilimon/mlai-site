@@ -53,6 +53,37 @@ case: `global.css` redefines `.text-slate-500` / `.text-slate-600` to lift the t
 text steps, which works only because it loads after the vendored sheet. Reordering the
 imports silently reverts those two colors to failing contrast, with nothing to catch it.
 
+## The webfonts are not from the bundle, and that is deliberate
+
+`src/ds/fonts/` holds the latin and latin-ext shards of Sora, Manrope and JetBrains
+Mono, taken from `@fontsource-variable` and vendored as files (no runtime dependency).
+They replace the three woff2s that shipped inside the design-system bundle, which were
+each a single wrong shard: between them they mapped exactly one printable ASCII
+character, `A`, plus Latin Extended-A and Cyrillic tails. Every other glyph fell back
+to the system stack, so none of the site's typography actually rendered — in the
+prototypes either.
+
+Nothing in the gate catches this. `npm run check` passes, the page still looks
+deliberate, and the only symptom is that the letterforms are wrong. So if you
+re-extract the design system, or swap a font for any reason, verify coverage before
+trusting the file:
+
+```sh
+python3 -c "
+from fontTools.ttLib import TTFont; import string, sys
+f = TTFont(sys.argv[1]); cm = {}
+for t in f['cmap'].tables: cm.update(t.cmap)
+missing = set(string.printable[:95]) - {chr(c) for c in cm}
+print(len(cm), 'codepoints;', len(missing), 'printable ASCII missing')
+" src/ds/fonts/sora-latin.woff2
+```
+
+A latin shard should report 0 missing. A latin-ext shard reports 93 missing by design —
+it is gated by `unicode-range` and only fetched for the characters it covers. Keep the
+family names (`Sora`, `Manrope`, `JetBrains Mono`) and the declared weight axes exactly
+as they are: inline styles across `src/` and the vendored utility classes both resolve
+through those names, so renaming a family silently drops the whole site to fallbacks.
+
 ## Responsive behavior is structural, not breakpoint-driven
 
 The prototypes were desktop-fixed. Two mechanisms carry every viewport, and both fail
