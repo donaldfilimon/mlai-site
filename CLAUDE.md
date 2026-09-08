@@ -99,6 +99,22 @@ quietly if bypassed:
 `html, body { overflow-x: hidden }` in `global.css` hides horizontal overflow rather than
 preventing it, so eyeballing the page will not reveal a regression — check the mechanisms.
 
+Measuring it has two traps, and falling into either reports a clean site that is not clean:
+
+- **`scrollWidth` is useless here.** `overflow-x: hidden` clamps it to `clientWidth`, so the
+  usual `scrollWidth > clientWidth` test passes no matter how far content escapes. Measure
+  element geometry instead: anything whose `getBoundingClientRect().right` exceeds the
+  viewport is a candidate.
+- **A candidate inside a scrollable wrapper is not a bug.** `.mlai-scroll-x` exists so wide
+  content — the WDBX spec tables, for one — scrolls inside its own box. Walk each candidate's
+  ancestors, and only count it if no ancestor has `overflow-x: auto | scroll` clipping at or
+  before the viewport edge. At 375px `/wdbx` legitimately reports 37 such elements.
+
+Anything changing rendered text metrics can move this, fonts included: the earlier
+verification was run while the webfonts were still glyph-empty, so every measurement was of
+the system fallback. Re-checked on the real faces, all 11 routes are clean at 375, 768 and
+1440 — but re-check rather than assume after any change to type.
+
 ## Routes and nav are two lists
 
 Adding a page means editing both `src/App.tsx` (the `<Route>` table; unknown paths
