@@ -115,6 +115,31 @@ verification was run while the webfonts were still glyph-empty, so every measure
 the system fallback. Re-checked on the real faces, all 11 routes are clean at 375, 768 and
 1440 — but re-check rather than assume after any change to type.
 
+## Verifying the accessibility claims
+
+`README.md` lists specific accessibility properties, and with no test runner here nothing
+checks them. Driving a browser does, and all of them currently hold: one `<h1>`, the
+`main#main` landmark and the skip link as first tab stop on all 11 routes; every canvas
+`aria-hidden`; no unlabelled image, button or form control; no duplicate `id`; and no
+dangling `aria-*` or `label[for]` reference anywhere.
+
+Two things make the Contact form's wiring easy to test wrongly, and both report a false pass:
+
+- **The form's state has to be driven, not just loaded.** `aria-invalid` and
+  `aria-describedby` are set from React error state, so they do not exist until a submit
+  fails. Submitting empty is what produces them — three fields marked invalid, each
+  `aria-describedby` resolving to real error text (`#err-name`, `#err-email`,
+  `#err-building`). The `role="status"` confirmation only exists after a _successful_
+  submit, which replaces the form. Inspecting the pristine page finds none of it and looks
+  clean.
+- **`button[type="submit"]` must be matched exactly.** The residency chips are `<button>`
+  elements earlier in the form, so a loose selector like `form button` returns a chip;
+  clicking it selects a residency option and no validation runs.
+
+One more trap, not specific to this form: serving `dist/` with a plain static server has no
+SPA fallback, so `GET /contact` is a 404 and every assertion runs against the error page.
+Load `/` and route client-side (`history.pushState` plus a `popstate` event) instead.
+
 ## Routes and nav are two lists
 
 Adding a page means editing both `src/App.tsx` (the `<Route>` table; unknown paths
