@@ -21,7 +21,8 @@ npm run check         # lint + format:check + build, same as CI
 React 19 + TypeScript + Vite, routed with `react-router-dom` v7. No server components —
 a static SPA. (`bun install` / `bunx --bun vite` work too if you prefer Bun.)
 
-CI runs `lint`, `format:check`, and `build` on every push to `main` and every PR.
+CI runs `lint`, `format:check`, and `build` on every push to `main` and every PR. Same-repo events run on a
+self-hosted macOS arm64 runner; fork PRs run on GitHub-hosted Ubuntu. See [docs/SelfHostedRunner.md](docs/SelfHostedRunner.md).
 
 ## Layout
 

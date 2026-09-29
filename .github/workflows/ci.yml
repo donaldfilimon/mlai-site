@@ -1,12 +1,52 @@
 name: CI
 
+# Trusted same-repo events (push to main, same-repo PRs) run on the macOS arm64
+# self-hosted runner registered to this repository with the label mlai-site.
+# Fork PRs stay on GitHub-hosted runners only: never schedule untrusted code on
+# the self-hosted machine. Until a runner with these labels is online, the
+# self-hosted job waits in the queue. See docs/SelfHostedRunner.md.
 on:
   push:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   check:
+    if: >
+      github.repository == 'donaldfilimon/mlai-site' &&
+      (github.event_name == 'push' ||
+       (github.event_name == 'pull_request' &&
+        github.event.pull_request.head.repo.full_name == github.repository))
+    runs-on: [self-hosted, macOS, ARM64, mlai-site]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Typecheck and build
+        run: npm run build
+
+  check-hosted:
+    name: check (GitHub-hosted, fork PRs)
+    if: >
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name != github.repository
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
